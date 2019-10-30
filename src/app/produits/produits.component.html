@@ -1,0 +1,36 @@
+
+<div class="row justify-content-center">
+    <div class="card-body">
+                <br/>
+        <div *ngFor="let produit of produits" class="card mx-auto">
+                <div *ngIf="!(user|async)" class="card-text ">
+                    {{produit['nom']}} 
+                    <br/>
+                    Prix : {{produit['prix']}} €
+                    <br/>
+                    {{produit['type']}} - Auteur : {{produit['auteur']}}
+                    <br/>
+                    Année : {{produit['publication']}} 
+                </div>
+
+                <div *ngIf="(user|async)" class="card-text ">
+              
+                {{produit['nom']}} 
+                <br/>
+                Prix : {{produit['prix']}} €
+                <br/>
+                {{produit['type']}} - Auteur : {{produit['auteur']}}
+                <br/>
+                Année : {{produit['publication']}} 
+                <div class="justify-content-center"> <br/> 
+                           
+                        <button type="button" class="btn btn-primary"
+                        (click)="addproduit(produit)">Ajouter au panier</button>
+                    </div>
+                    </div>
+                </div>
+                <br/>
+        </div>
+        <br/>
+</div>
+

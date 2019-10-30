@@ -1,0 +1,11 @@
+<div class="list-group">
+<div *ngFor="let categorie of categories">        
+        <a *ngIf="user|async" class="list-group-item list-group-item-action nav-link" (click)="ProduitsparCategories(categorie)">{{categorie}}</a>
+        <a *ngIf="!(user|async)" class="list-group-item list-group-item-action">Connectez-vous pour voir la catégorie : {{categorie}}</a>
+        
+        <!-- <a [(click)]="['ProduitsparCategories('['categorie']')']" class="list-group-item list-group-item-action nav-link">{{categorie}}</a> -->
+        <!-- <a *ngIf="(user|async)" (click)="['ProduitsparCategories('+categorie')']" class="list-group-item list-group-item-action nav-link">{{categorie}}</a> -->
+        <!-- <a *ngIf="(user|async)" [routerLink]="['/categories/' + categorie]" class="list-group-item list-group-item-action nav-link">{{categorie}}</a> -->
+
+</div>
+  </div>

@@ -1,0 +1,56 @@
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+    <a class="navbar-brand" routerLink="/produits">SF Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/produits">Produits
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/categories">Catégories</a>
+        </li>
+       
+       
+      </ul>
+      <ul class="navbar-nav mr-auto">
+          <form *ngIf="user|async" (ngSubmit)="onSubmit()" #searchForm="ngForm"  class="form-inline md-form ml-auto mb-4" >
+              <input class="form-control mr-sm-2" type="text" placeholder="Auteur" aria-label="Search" [(ngModel)]="critere['auteur']" name="auteur">
+              <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+      </ul>
+      
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item active">
+          <a *ngIf="user|async" class="nav-link" routerLink="/utilisateur/panier">Panier
+            <i class="fas fa-shopping-bag"></i>
+          </a>
+            
+        </li>
+
+        <li class="nav-item dropdown">
+        <div class="btn-group" mdbDropdown>
+            <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
+              mdbWavesEffect>
+              <i class="fas fa-user"></i>
+            </button>
+          
+            <div *ngIf="user|async" class="dropdown-menu dropdown-primary">
+              <a class="dropdown-item disabled" href="#">Login</a>
+              <a class="dropdown-item active" (click)="deconnexion()">Logout</a>
+            </div>
+            <div *ngIf="!(user|async)" class="dropdown-menu dropdown-primary">
+              <a class="dropdown-item active" routerLink="/utilisateur/connexion">Login</a>
+              <a class="dropdown-item disabled" (click)="deconnexion()">Logout</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
